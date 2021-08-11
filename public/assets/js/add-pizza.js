@@ -42,7 +42,6 @@ const handlePizzaSubmit = event => {
   const pizzaName = $pizzaForm.querySelector('#pizza-name').value;
   const createdBy = $pizzaForm.querySelector('#created-by').value;
   const size = $pizzaForm.querySelector('#pizza-size').value;
-  // transform DOM data into a real array of objects to execute .map()
   const toppings = [...$pizzaForm.querySelectorAll('[name=topping]:checked')].map(topping => {
     return topping.value;
   });
@@ -52,6 +51,7 @@ const handlePizzaSubmit = event => {
   }
 
   const formData = { pizzaName, createdBy, size, toppings };
+
   //POST the formData object to the API
   fetch('/api/pizzas', {
     method: 'POST',
@@ -73,3 +73,4 @@ const handlePizzaSubmit = event => {
 
 $pizzaForm.addEventListener('submit', handlePizzaSubmit);
 $addToppingBtn.addEventListener('click', handleAddTopping);
+
